@@ -1,0 +1,27 @@
+<div *ngIf = 'nav.isAuth; then thenBlock else elseBlock'></div>
+<ng-template #thenBlock>
+	<div *ngIf='nav.visible' class=" card">
+        	<ul class="nav nav-pills flex-lg-column">
+			<li class="nav-item">
+				<a class="nav-link" [routerLink]="['ticets/create']"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Создать заявку</a>
+			</li>
+			<li class="nav-item" *ngIf='nav.curStatus === "Администратор"'>
+				<a class="nav-link" [routerLink]="['ticets/page']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Все заявки</a>
+			</li>
+			<li class="nav-item" *ngIf='nav.curStatus === "Администратор"'>
+				<a class="nav-link" [routerLink]="['ticets/supervisedList']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Курируемые заявки</a>
+			</li>
+    	   		<li class="nav-item" *ngIf='nav.curStatus === "Администратор"'>
+        	    		<a class="nav-link" [routerLink]="['users/page']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Список пользователей</a>
+			</li>
+    			<li class="nav-item">
+        	    		<a class="nav-link" [routerLink]="['users/view/profile']"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Мой профиль</a>
+            		</li>
+			<li class="nav-item">
+				<a class="nav-link" [routerLink]="['ticets/myList']"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Мои заявки</a>
+			</li>
+		</ul>
+	</div>
+</ng-template>
+<ng-template #elseBlock>
+</ng-template>

@@ -1,0 +1,22 @@
+<div *ngIf="error" class="alert alert-info">{{error}}</div>
+<div class="card login-form">
+	<h3 class="card-header">Страница авторизации</h3>
+	<div class="card-body">
+		<div class="form-group">
+			<h5 class="class-text">Адрес электронной почты</h5>
+			<input type="email" class="form-control mb-3" placeholder="Введите адрес электронной почты" name="email" [(ngModel)]="model.email" required email #emailControl="ngModel"/>
+			<div *ngIf="!emailControl.valid && !emailControl.untouched" class="alert alert-danger">Email введен неправильно</div>
+		</div>
+		<div class="form-group">
+			<h5 class="class-text">Пароль</h5>
+			<input type="password" class="form-control mb-3" placeholder="Введите пароль" name="password" [(ngModel)]="model.password" required #passwordControl="ngModel"/>
+			<div *ngIf="!passwordControl.valid && !passwordControl.untouched" class="alert alert-danger">Пароль введен неправильно</div>
+		</div>
+	</div>
+	<div class="card-footer">
+		<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+			<button [disabled]="!emailControl.valid || !passwordControl.valid" (click)="login()" class="btn btn-success btn-lg">Подтвердить</button>
+			<button (click)="registrarion()" class="btn btn-primary btn-lg">Регистрация</button>
+		</div>
+	</div>
+</div>

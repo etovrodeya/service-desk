@@ -1,0 +1,12 @@
+<div *ngIf="message" class="alert alert-info">{{message}}</div>
+<div class="card">
+    <div class="card-header">Пользователь №{{item.userId}}</div>
+	<div class="card-body">
+	    <h5 class="card-title">{{item.UserName}}</h5>
+		<p class="card-text">Отдел: {{item.office}}</p>
+		<p class="card-text">Номер: {{item.phone}}</p>
+		<p class="card-text">Статус: {{item.status}}</p>
+		<p class="card-text">Email: {{item.email}}</p>
+		<p class="text-muted">{{item.modified}}</p>
+	</div>
+</div>

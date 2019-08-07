@@ -1,0 +1,25 @@
+<div *ngIf = 'nav.isAuth; then thenBlock else elseBlock'></div>
+<ng-template #thenBlock>
+    <div class="header clearfix" *ngIf='nav.visible'>
+        <nav>
+            <ul class="nav nav-pills flex-column flex-md-row float-right">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['logout']"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Выйти</a>
+                </li>
+            </ul>
+        </nav>
+        <h3 class="text-muted">{{title}}</h3>
+    </div>
+</ng-template>
+<ng-template #elseBlock>
+    <div class="header clearfix" *ngIf='nav.visible'>
+        <nav>
+            <ul class="nav nav-pills flex-column flex-md-row float-right">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['login']"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Авторизация</a>
+                </li>
+            </ul>
+        </nav>
+        <h3 class="text-muted">{{title}}</h3>
+    </div>
+</ng-template>

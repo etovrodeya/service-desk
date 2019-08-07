@@ -1,0 +1,32 @@
+<div *ngIf="message" class="alert alert-info">{{message}}</div>
+<div class="card">
+	<h4 class="card-header">Заявка №{{item.ticetId}}
+		<button (click)="deleteTicet(item._id)" class="btn btn-danger float-right">Удалить</button>
+	</h4>
+   	<div class="card-body">
+		<h5 class="card-title">{{item.title}}</h5>
+		<p class="card-text">Cтатус: {{item.status}}<br>
+		Исполниель: {{item.curator}}</p>
+		<h6>Описание:</h6>
+		<p class="card-subtext">{{item.description}}</p>
+		<p class="text-muted">
+			Создана: {{item.modified | date:'dd/MM/yyyy'}}<br>
+			Автор: {{item.userName}}
+		</p>
+	</div>
+	<div class="card-footer">
+		<div class="input-group mb-3">
+			<input type="text" class="form-control" placeholder="Напишите коментарий" [(ngModel)]='commentModel.text'>
+			<button (click)="createComment()" class="btn btn-success">Сохранить</button>
+		</div>
+		<div *ngFor="let comment of commentList" class="card mb-2">
+			<div class="card-block">
+				<h4 class="card-title">{{comment.UserName}}
+					<button (click)="deleteComment(comment._id)" class="btn btn-danger float-right">Удалить</button>
+				</h4>
+				<p class="card-text">{{comment.text}}<br>
+				<span class="text-muted">{{comment.modified | date:'dd/MM/yyyy'}}</span></p>
+			</div>
+		</div>
+	</div>
+</div>

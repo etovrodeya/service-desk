@@ -1,0 +1,5 @@
+<div *ngIf="message" class="alert alert-info">{{message}}</div>
+<div>
+	<textarea type="text" placeholder="Опишите вашу проблему" class="form-control mb-3" rows="4" cols="50" name='description' [(ngModel)]="model.description"></textarea>
+	<button (click)="createTicet()" class="btn btn-success btn-block btn-lg">Сохранить</button>
+</div>

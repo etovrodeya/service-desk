@@ -1,0 +1,44 @@
+<div *ngIf="message" class="alert alert-info">{{message}}</div>
+<div class="card">
+	<h5 class="card-header">Регистрация</h5>
+	<div class="card-body">
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<span class="input-group-text">Email</span>
+			</div>
+			<input type="email" class="form-control" [(ngModel)]="model.email" required email #emailControl="ngModel">
+		</div>
+		<div *ngIf="!emailControl.valid && !emailControl.untouched" class="alert alert-danger">Email введен неправильно</div>
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<span class="input-group-text">Пароль</span>
+			</div>
+			<input type="password"  class="form-control" [(ngModel)]="model.password" required #passwordControl="ngModel">
+		</div>
+		<div *ngIf="!passwordControl.valid && !passwordControl.untouched" class="alert alert-danger">Поле "Пароль" не заполено</div>
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<span class="input-group-text">Ф.И.О</span>
+			</div>
+			<input class="form-control" [(ngModel)]="model.userName">
+		</div>
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<span class="input-group-text">Номер телефона</span>
+			</div>
+			<input class="form-control" [(ngModel)]="model.phone">
+		</div>
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<span class="input-group-text">Название отдела</span>
+			</div>
+			<input class="form-control" [(ngModel)]="model.office">
+		</div>
+		<select class="custom-select" [(ngModel)]="model.status">
+			<option *ngFor="let status of statuses" [ngValue]="status">{{status.label}}</option>
+		</select>
+	</div>
+	<div class="card-footer">
+		<button [disabled]="!emailControl.valid || !passwordControl.valid" (click)="createUser()" class="btn btn-success btn-block btn-lg">Сохранить</button>
+	</div>
+</div>

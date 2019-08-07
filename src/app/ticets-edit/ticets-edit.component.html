@@ -1,0 +1,35 @@
+<div *ngIf="message" class="alert alert-info">{{message}}</div>
+<div class="card">
+	<h5 class="card-header">Заявка №{{model.ticetId}}</h5>
+	<div class="card-body">
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+   	    		<span class="input-group-text">Тема</span>
+    		</div>
+			<select class="custom-select" [(ngModel)]="model.title">
+				<option *ngFor='let title of titleList' [ngValue]='title.label'>{{title.label}}</option>
+			</select>
+		</div>
+   	    <h6>Описание:</h6>
+    	<textarea type="" class="form-control mb-3" rows="4" cols="50" name='description' [(ngModel)]="model.description"></textarea>
+		<div class="input-group mb-3">
+   			<div class="input-group-prepend">
+   				<label class="input-group-text">Статус</label>
+			</div>
+			<select class="custom-select" [(ngModel)]="model.status">
+				<option *ngFor='let status of statusList' [ngValue]='status.label'>{{status.label}}</option>
+			</select>
+		</div>
+		<div class="input-group">
+   			<div class="input-group-prepend">
+   				<label class="input-group-text">Исполнитель</label>
+			</div>
+			<select class="custom-select" [(ngModel)]="model.curator">
+				<option *ngFor='let curator of curatorList' [ngValue]='curator'>{{curator.UserName}}</option>
+			</select>		
+		</div>
+	</div>
+	<div class="card-footer">
+		<button (click)="editTicet()" class="btn btn-success btn-block btn-lg">Сохранить</button>
+	</div>
+</div>

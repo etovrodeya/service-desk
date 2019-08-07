@@ -1,0 +1,30 @@
+<div *ngIf="message" class="alert alert-info">{{message}}</div>
+<div class="card">
+	<h5 class="card-header">{{model.UserName}}</h5>
+	<div class="card-body">
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<span class="input-group-text">Ф.И.О</span>
+			</div>
+			<input class="form-control" [(ngModel)]="model.UserName">
+		</div>
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<span class="input-group-text">Номер телефона</span>
+			</div>
+			<input class="form-control" [(ngModel)]="model.phone">
+		</div>
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<span class="input-group-text">Название отдела</span>
+			</div>
+			<input class="form-control" [(ngModel)]="model.office">
+		</div>
+		<select class="custom-select mb-3" [(ngModel)]="model.status">
+			<option *ngFor="let status of statuses" [ngValue]="status">{{status.label}}</option>
+		</select>
+	</div>
+	<div class="card-footer">
+		<button (click)="editUserProfile()" class="btn btn-success btn-block btn-lg">Сохранить</button>
+	</div>
+</div>

@@ -1,0 +1,28 @@
+<div *ngIf="message" class="alert alert-info">{{message}}</div>
+<div class="card mb-3" *ngFor="let item of collection | paginate: {itemsPerPage: 5, currentPage: p}">
+	<h5 class="card-header">{{item.UserName}}</h5>	
+	<div class="card-body">
+		  <h6 class="card-subtitle mb-2 text-muted">
+			Дата регистрации: {{item.createdAt | date:'dd/MM/yyyy'}}<br>
+		  Номер пользователя: {{item.userId}}</h6>
+		  <p class="card-text">
+			  Номер: {{item.phone}} <br>
+			  Отдел: {{item.office}} <br>
+			  Статус: {{item.status}}
+			</p>
+		</div>
+			<div class="card-footer">
+				<div class="btn-toolbar justify-content-between" role="group" aria-label="Button group with nested dropdown">
+						<button type="button" (click)="view(item.userId)" class="btn btn-info btn-secondary">Посмотреть</button>
+						<button type="button" (click)="edit(item.userId)" class="btn btn-warning btn-secondary">Изменить</button>
+						<button type="button" (click)="deleteUser(item._id)" class="btn btn-danger btn-secondary">Удалить</button>
+				</div>
+			</div>
+</div>
+<div class="row">
+	<div class="col-sm-10 offset-sm-2">
+			<div >
+					<pagination-controls (pageChange)="p = $event"></pagination-controls>
+			</div>
+	</div>
+</div>
